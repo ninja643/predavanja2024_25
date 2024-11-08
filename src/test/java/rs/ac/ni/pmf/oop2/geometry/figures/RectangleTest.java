@@ -20,4 +20,18 @@ class RectangleTest
 		Rectangle rectangle = new Rectangle(10, 8);
 		assertEquals(36, rectangle.perimeter());
 	}
+
+	@Test
+	void testInstanceCount()
+	{
+		Rectangle rectangle1 = new Rectangle(10, 8);
+		assertEquals(1, rectangle1.getId());
+		System.out.println("Instance count on rectangle 1: "
+								   + Rectangle.getInstanceCount());
+
+		Rectangle rectangle2 = new Rectangle(100, 80);
+		assertEquals(2, rectangle2.getId());
+		System.out.println("Instance count on rectangle 2: "
+								   + Rectangle.getInstanceCount());
+	}
 }
