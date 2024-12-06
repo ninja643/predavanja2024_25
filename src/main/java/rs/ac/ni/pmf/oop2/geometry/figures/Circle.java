@@ -9,8 +9,12 @@ public class Circle
 		radius = 1.0;
 	}
 
-	public Circle(double r)
+	public Circle(double r) throws CircleRadiusException
 	{
+		if (r <= 0)
+		{
+			throw new CircleRadiusException("Invalid radius");
+		}
 		radius = r;
 	}
 
@@ -22,11 +26,5 @@ public class Circle
 	public void setRadius(final Double radius)
 	{
 		this.radius = radius;
-	}
-
-	public static void main(String[] args)
-	{
-		Circle circle = new Circle(3);
-		System.out.println(circle.getRadius());
 	}
 }

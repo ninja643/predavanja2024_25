@@ -1,5 +1,9 @@
 package rs.ac.ni.pmf.oop2.geometry.figures;
 
+import lombok.Data;
+import lombok.Value;
+
+@Data
 public class Rectangle
 {
 	private static int instanceCount = 0;
@@ -9,9 +13,20 @@ public class Rectangle
 	private final int id;
 
 	public Rectangle(final double width, final double height)
+			throws RectangleDimensionsException
 	{
+		if (width <= 0 || height <= 0)
+		{
+			final String message = "Rectangle dimensions [width: " + width
+					+ ", height: " + height + " ] are not valid";
+
+//			throw new IllegalArgumentException(message);
+			throw new RectangleDimensionsException(width, height, message);
+		}
+
 		this.width = width;
 		this.height = height;
+
 		instanceCount++;
 		this.id = instanceCount;
 	}
